@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { NAvatar } from 'naive-ui'
 import { useUserStore } from '@/store'
 import defaultAvatar from '@/assets/whalesDAO-avatar.png'
+import defaultDescImg from '@/assets/qrcode_258.jpeg'
 import { isString } from '@/utils/is'
 
 const userStore = useUserStore()
@@ -32,7 +33,7 @@ const userInfo = computed(() => userStore.userInfo)
       <p class="overflow-hidden text-xs text-gray-500 text-ellipsis whitespace-nowrap">
         <span
           v-if="isString(userInfo.description) && userInfo.description !== ''"
-          v-html="userInfo.description"
+          v-html="userInfo.description" :fallback-src="defaultDescImg"
         />
       </p>
     </div>
